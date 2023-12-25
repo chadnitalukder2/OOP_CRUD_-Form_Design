@@ -45,6 +45,7 @@
             else
             {
                 //move_uploaded_file($file_temp, $upload_image);
+                #=====================insert Data============================
 
                 $query = "INSERT INTO `tbl_register`(`name`, `email`, `phone`, `photo`, `address`) VALUES ('$name', '$email', '$phone',  ' photo','$address')";
                 
@@ -59,7 +60,12 @@
                     return $msg;
                 }
             }
-    
+        }
+//add student==========================================
+        public  function allStudent(){
+            $query  = "SELECT * FROM tbl_register ORDER BY id DESC";
+            $result = $this->db->select($query);
+            return $result;
         }
     }
 

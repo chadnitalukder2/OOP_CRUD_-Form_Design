@@ -10,8 +10,7 @@
         public $link;
         public $error;
 
-        public function __construct()
-        {
+        public function __construct(){
             $this->dbConnet();
         }
 
@@ -25,15 +24,23 @@
         }
 
 
-        //Insert
-         public function insert($query)
-        {
+        //=======================Insert==================================
+         public function insert($query){
             $result =  mysqli_query($this->link, $query) or die($this->link->error.__LINE__);
-            if($result)
-            {
+            if($result){
                 return $result;
-            }else
-            {
+            }
+            else{
+                return false;
+            }
+        }
+         //=======================select==================================
+         public function select($query){
+            $result =  mysqli_query($this->link, $query) or die($this->link->error.__LINE__);
+            if(mysqli_num_rows($result) > 0){
+                return $result;
+            }
+            else{
                 return false;
             }
         }
