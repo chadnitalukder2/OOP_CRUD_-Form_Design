@@ -1,7 +1,7 @@
 <?php
-    include_once '../config/config.php';
+    include_once 'config/config.php';
 
-    class Databse{
+    class Database{
         public $host      = HOST;
         public $user      = USER;
         public $password  = PASSWORD;
@@ -22,14 +22,27 @@
                         $this->error = "Database Connection Failed";
                         return false;
                 }
+        }
 
 
-
-
+        //Insert
+         public function insert($query)
+        {
+            $result =  mysqli_query($this->link, $query) or die($this->link->error.__LINE__);
+            if($result)
+            {
+                return $result;
+            }else
+            {
+                return false;
             }
+        }
 
 
-    }
+     }
+
+
+    
 
 
 

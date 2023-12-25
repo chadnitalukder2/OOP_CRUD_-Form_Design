@@ -1,3 +1,16 @@
+<?php
+    include_once 'classes/register.php';
+    $re = new Register;
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
+        var_dump($_POST, $_FILES);
+        $register = $re->addRegister($_POST, $_FILES);
+    
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -16,11 +29,22 @@
             <div class="row d-flex justify-content-center ">
                 <div class="col-md-7">
                     <div class="card shadow">
+                        <?php
+                            if(isset($register))
+                            {
+                                ?>
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong><?php $register ; ?></strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                <?php
+                            }
+                        ?>
                         <div class="card-header">
                             <h1>Student Registration Form</h1>
                         </div>
-                        <div class="card-body">
-                            <form>
+                        <div class="card-body" enctype="multipart/form-data">
+                            <form method="POST">
                                 <label for="">Name</label>
                                 <input type="text" name="name" placeholder="Enter Your Name" class="form-control mb-3">
 

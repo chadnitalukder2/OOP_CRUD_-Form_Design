@@ -2,8 +2,6 @@
     define('HOST', 'localhost');
     define('USER', 'root');
     define('PASSWORD', '');
-    define('DATABASE', 'db_register');
-
-
-
+    define('DATABASE', 'db_crud');
+    
 ?>
