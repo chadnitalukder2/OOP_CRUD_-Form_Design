@@ -58,8 +58,8 @@
                                                 <td>photo</td>
                                                 <td><?=$row['address']?></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                                                    <a href="#" class="btn btn-sm btn-danger">delete</a>
+                                                    <a href="edit.php?id=<?=base64_encode($row['id'])?>" class="btn btn-sm btn-warning">Edit</a>
+                                                    <a href="delete.php?id=<?=$row['id']?>" class="btn btn-sm btn-danger">delete</a>
                                                 </td>
                                             </tr>
                                         <?php

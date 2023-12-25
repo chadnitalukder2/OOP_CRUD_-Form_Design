@@ -61,13 +61,26 @@
                 }
             }
         }
-//add student==========================================
+        //add student==========================================
         public  function allStudent(){
             $query  = "SELECT * FROM tbl_register ORDER BY id DESC";
             $result = $this->db->select($query);
             return $result;
+            
         }
+
+        //======show student==============================
+        public function getStdById($id){
+            $query  = "SELECT * FROM tbl_register  WHERE id = '$id' ";
+            $result = $this->db->select($query);
+            return $result;
+        }
+
+
+
     }
+
+ 
 
 
 ?>
