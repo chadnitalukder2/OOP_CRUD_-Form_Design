@@ -6,9 +6,9 @@
         $id = base64_decode($_GET['id']);
     }
 
-    /*if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $register = $re->addRegister($_POST, $_FILES);
-    }*/
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $register = $re->updateStudent($_POST, $_FILES, $id);
+    }
 
 ?>
 

@@ -9,9 +9,8 @@
         {
             $this->db = new Database();
         }
-
-        public function addRegister($data, $file)
-        {
+        //===============insert===============
+        public function addRegister($data, $file){
             $name    = $data['name'];
             $email   = $data['email'];
             $phone   = $data['phone'];
@@ -42,8 +41,7 @@
                 $msg = "You Can upload only ".implode(', ', $permited);
                 return $msg;
             }*/
-            else
-            {
+            else {
                 //move_uploaded_file($file_temp, $upload_image);
                 #=====================insert Data============================
 
@@ -75,7 +73,35 @@
             $result = $this->db->select($query);
             return $result;
         }
+        //================update Student========
+        public function updateStudent($data, $file, $id){
+            $name    = $data['name'];
+            $email   = $data['email'];
+            $phone   = $data['phone'];
+            $address = $data['address'];
+    
+            if((empty($name)) || empty($email) || empty($phone) || empty($address) ){
+                $msg = "Filds Must Not Be Empty";
+                return $msg;
+            }
+            else{
+                $query = "UPDATE tbl_register 
+                SET name ='$name',email = '$email', phone = '$phone', address = '$address'
+                WHERE id = '$id' ";
+        
+                $result = $this->db->insert($query);
 
+                if($result){
+                    $msg = "Student Update Susscessfull ";
+                    return $msg;
+                }
+                else{
+                    $msg = "Student Update Failed ";
+                    return $msg;
+                }
+            }
+
+        }
 
 
     }
