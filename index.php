@@ -1,7 +1,11 @@
 <?php
     include_once 'classes/register.php';
     $re = new Register;
-
+#======================delete=========================
+    if(isset($_GET['delStd'])){
+        $id = base64_decode($_GET['delStd']);
+        $delStudent = $re->delStudent($id);
+    }
    
    
 ?>
@@ -24,6 +28,17 @@
             <div class="row d-flex justify-content-center ">
                 <div class="col-md-12">
                     <div class="card shadow">
+                    <?php
+                            if(isset($delStudent))
+                            {
+                                ?>
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong><?php echo $delStudent ; ?></strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                <?php
+                            }
+                        ?>
                         <div class="card-header">
                            <div class="row">
                             <div class="col-md-6">
@@ -59,7 +74,7 @@
                                                 <td><?=$row['address']?></td>
                                                 <td>
                                                     <a href="edit.php?id=<?=base64_encode($row['id'])?>" class="btn btn-sm btn-warning">Edit</a>
-                                                    <a href="delete.php?id=<?=$row['id']?>" class="btn btn-sm btn-danger">delete</a>
+                                                    <a href="?delStd=<?= base64_encode($row['id'])?>" onclick="return confirm('Are you sure to delete!')" class="btn btn-sm btn-danger">delete</a>
                                                 </td>
                                             </tr>
                                         <?php

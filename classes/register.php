@@ -100,7 +100,21 @@
                     return $msg;
                 }
             }
-
+        }
+        #======================delete==================
+        public function delStudent($id){
+            $del_query = "DELETE FROM tbl_register
+                        WHERE id = '$id' ";
+            $del  = $this->db->delete($del_query);
+            
+            if($del){
+                $msg = "Student delete Susscessfull ";
+                return $msg;
+            }
+            else{
+                $msg = "Student delete Failed ";
+                return $msg;
+            }
         }
 
 
