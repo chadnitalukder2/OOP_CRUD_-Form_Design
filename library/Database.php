@@ -23,7 +23,6 @@
                 }
         }
 
-
         //=======================Insert==================================
          public function insert($query){
             $result =  mysqli_query($this->link, $query) or die($this->link->error.__LINE__);
@@ -34,6 +33,7 @@
                 return false;
             }
         }
+
          //=======================select==================================
          public function select($query){
             $result =  mysqli_query($this->link, $query) or die($this->link->error.__LINE__);
@@ -44,6 +44,7 @@
                 return false;
             }
         }
+
         //======================update==============
         public function update($query){
             $result =  mysqli_query($this->link, $query) or die($this->link->error.__LINE__);
@@ -54,6 +55,7 @@
                 return false;
             }
         }
+        
          //======================delete==============
          public function delete($query){
             $result =  mysqli_query($this->link, $query) or die($this->link->error.__LINE__);

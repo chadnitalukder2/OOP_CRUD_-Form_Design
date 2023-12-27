@@ -68,7 +68,8 @@
                                             <input type="number" name="phone" value="<?= $row['phone'] ?>" class="form-control mb-3">
 
                                             <label for="">Photo</label>
-                                            <input type="file" name="photo"  class="form-control mb-3">
+                                            <input type="file" name="photo" class="form-control mb-3">
+                                            <img src="<?= $row['photo'] ?>" style="width: 200px" class="img-thumbnail">   <br>        
 
                                             <label for="">Address</label>
                                             <textarea name="address" class="form-control mb-4" ><?= $row['address'] ?></textarea>

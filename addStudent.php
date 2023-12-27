@@ -2,13 +2,9 @@
     include_once 'classes/register.php';
     $re = new Register;
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-       
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $register = $re->addRegister($_POST, $_FILES);
-    
     }
-
 ?>
 
 <!doctype html>
