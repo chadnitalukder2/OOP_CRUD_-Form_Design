@@ -94,47 +94,47 @@
                 $msg = "Filds Must Not Be Empty";
                 return $msg;
             }
-            #------------
-            if(!empty($file_name)){
-                #---------img------
-                if($file_size > 1048567){
-                    $msg = "File size must be less than 1 MB";
-                    return $msg;
-                }
-                else if(in_array($file_ext, $permited) == false){
-                    $msg = "You Can upload only".implode(', ', $permited);
-                    return $msg;
-                }
-                #=====================insert Data with img============================
-                else {
-                    #--------update img delete----------
-                    $img_query = "SELECT * FROM tbl_register WHERE id = '$id' ";
-                    $img_res   = $this->db->select($img_query);
-                    if($img_res){
-                        while($row = mysqli_fetch_assoc($img_res)){
-                            $photo = $row['photo'];
-                            unlink($photo);
+                #------------
+                if(!empty($file_name)){
+                    #---------img------
+                    if($file_size > 1048567){
+                        $msg = "File size must be less than 1 MB";
+                        return $msg;
+                    }
+                    else if(in_array($file_ext, $permited) == false){
+                        $msg = "You Can upload only".implode(', ', $permited);
+                        return $msg;
+                    }
+                    #=====================insert Data with img============================
+                    else {
+                        #--------update img delete----------
+                        $img_query = "SELECT * FROM tbl_register WHERE id = '$id' ";
+                        $img_res   = $this->db->select($img_query);
+                        if($img_res){
+                            while($row = mysqli_fetch_assoc($img_res)){
+                                $photo = $row['photo'];
+                                unlink($photo);
+                            }
+                        }
+                        #-----------------
+                        move_uploaded_file($file_temp, $upload_image);
+
+                        $query = "UPDATE tbl_register
+                        SET name = '$name', email = '$email', phone = '$phone', photo = '$upload_image', address = '$address' 
+                        WHERE id = '$id' ";
+                        
+                        $result = $this->db->insert($query);
+
+                        if($result){
+                            $msg = "Student Update Susscessfull ";
+                            return $msg;
+                        }
+                        else{
+                            $msg = "Student Update Failed ";
+                            return $msg;
                         }
                     }
-                    #-----------------
-                    move_uploaded_file($file_temp, $upload_image);
-
-                    $query = "UPDATE tbl_register
-                    SET name = '$name', email = '$email', phone = '$phone', photo = '$upload_image', address = '$address' 
-                    WHERE id = '$id' ";
-                    
-                    $result = $this->db->insert($query);
-
-                    if($result){
-                        $msg = "Student Update Susscessfull ";
-                        return $msg;
-                    }
-                    else{
-                        $msg = "Student Update Failed ";
-                        return $msg;
-                    }
                 }
-            }
             #-----------insert Data with img---------------------
             else{
                 $query = "UPDATE tbl_register
