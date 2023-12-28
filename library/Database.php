@@ -6,7 +6,7 @@
         public $user      = USER;
         public $password  = PASSWORD;
         public $database  = DATABASE;
-
+        
         public $link;
         public $error;
 

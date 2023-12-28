@@ -46,7 +46,7 @@
                             </div>
                            </div>
                         </div>
-                        <div class="card-body" enctype="multipart/form-data">
+                        <div class="card-body" >
                             <form method="POST" enctype="multipart/form-data">
                                 <label for="">Name</label>
                                 <input type="text" name="name" placeholder="Enter Your Name" class="form-control mb-3">
